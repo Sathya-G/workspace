@@ -105,3 +105,6 @@ jobs:
       run: |
           kustomize edit set image backend=$REPO_URI:$IMAGE_TAG
           kustomize build | kubectl apply -f -
+    - name: Frontend and Backend URL
+      run: |
+          kubectl get svc -A
