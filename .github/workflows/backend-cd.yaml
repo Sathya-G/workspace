@@ -94,7 +94,7 @@ jobs:
     - name: Configure Kubeconfig
       env:
         EKS_NAME: ${{ vars.BACKEND_EKS_NAME }}
-      run:
+      run: |
         aws eks update-kubeconfig --name $EKS_NAME --region us-east-1
       
     - name: Deploy Docker Image to Amazon EKS
