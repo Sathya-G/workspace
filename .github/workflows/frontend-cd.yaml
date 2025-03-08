@@ -1,4 +1,4 @@
-name: FrontEnd Continuous Deployment
+name: FrontEnd Continuous Deployment Pipeline
 
 on:
   workflow_dispatch:
