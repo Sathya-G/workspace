@@ -113,3 +113,4 @@ jobs:
     - name: Frontend and Backend URL
       run: |
           kubectl get svc -A
+          kubectl get pods
