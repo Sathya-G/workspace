@@ -88,7 +88,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
         REPO_URI: ${{ vars.BACKEND_ECR_URI }}
 
-        # value: http://localhost:5000
         REACT_APP_MOVIE_API_URL: ${{ vars.REACT_APP_MOVIE_API_URL }}
 
       run: |
