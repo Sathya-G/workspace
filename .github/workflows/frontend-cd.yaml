@@ -95,7 +95,7 @@ jobs:
       run: |
         docker build --build-arg=REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL --tag $REPO_URI:$IMAGE_TAG .
         docker push $REPO_URI:$IMAGE_TAG
-        export URL=REACT_APP_MOVIE_API_URL
+        export URL=${{ vars.REACT_APP_MOVIE_API_URL }}
         echo $URL
 
     - name: Configure Kubeconfig
