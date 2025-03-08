@@ -1,4 +1,4 @@
-name: Continuous Integration - FrontEnd
+name: FrontEnd Continuous Integration Pipeline
 
 on:
   workflow_dispatch:

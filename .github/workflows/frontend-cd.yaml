@@ -1,4 +1,4 @@
-name: Continuous Deployment - FrontEnd
+name: FrontEnd Continuous Deployment Pipeline
 
 on:
   workflow_dispatch:
@@ -82,7 +82,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Login to Amazon 
+    - name: Amazon Login 
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
 
@@ -91,18 +91,17 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }}
         REPO_URI: ${{ vars.FRONTEND_ECR_URI }}
-
         REACT_APP_MOVIE_API_URL: ${{ vars.REACT_APP_MOVIE_API_URL }}
-
       run: |
         docker build --build-arg=REACT_APP_MOVIE_API_URL=$REACT_APP_MOVIE_API_URL --tag $REPO_URI:$IMAGE_TAG .
         docker push $REPO_URI:$IMAGE_TAG
+        export URL=${{ vars.REACT_APP_MOVIE_API_URL }}
+        echo $URL
 
     - name: Configure Kubeconfig
       env:
         EKS_NAME: ${{ vars.FRONTEND_EKS_NAME }}
-
-      run:
+      run: |
         aws eks update-kubeconfig --name $EKS_NAME --region us-east-1
 
     - name: Deploy Docker Image to Amazon EKS
@@ -110,7 +109,10 @@ jobs:
       env:
         IMAGE_TAG: ${{ github.sha }}
         REPO_URI: ${{ vars.FRONTEND_ECR_URI }}
-
       run: |
           kustomize edit set image frontend=$REPO_URI:$IMAGE_TAG
           kustomize build | kubectl apply -f -
+    - name: Frontend and Backend URL
+      run: |
+          kubectl get svc -A
+          kubectl get pods
