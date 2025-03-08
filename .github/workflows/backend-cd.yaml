@@ -88,9 +88,6 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
         REPO_URI: ${{ vars.BACKEND_ECR_URI }}
 
-        # sample value: http://localhost:5000
-        REACT_APP_MOVIE_API_URL: ${{ vars.REACT_APP_MOVIE_API_URL }}
-
       run: |
         docker build --build-arg=REACT_APP_MOVIE_API_URL=http://localhost:5000 --tag $REPO_URI:$IMAGE_TAG .
         docker push $REPO_URI:$IMAGE_TAG
@@ -100,6 +97,8 @@ jobs:
         EKS_NAME: ${{ vars.BACKEND_EKS_NAME }}
       run: |
         aws eks update-kubeconfig --name $EKS_NAME --region us-east-1
+        export EKS_Name=${{ vars.BACKEND_EKS_NAME }}
+        echo $EKS_Name
       
     - name: Deploy Docker Image to Amazon EKS
       working-directory: starter/backend/k8s
