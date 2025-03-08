@@ -92,7 +92,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
         REPO_URI: ${{ vars.FRONTEND_ECR_URI }}
 
-        # sample value: http://localhost:5000
+        # value: http://localhost:5000
         REACT_APP_MOVIE_API_URL: ${{ vars.REACT_APP_MOVIE_API_URL }}
 
       run: |
