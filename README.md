@@ -412,7 +412,8 @@ kustomize build | kubectl apply -f -
 [License](LICENSE.md)
 ### Output
 ![WorkingFrontend1](https://github.com/user-attachments/assets/7363493d-2f1b-4098-90fe-f9cc2ee8577d)
-![WorkingFrontend](https://github.com/user-attachments/assets/4c779255-4798-471d-bf6d-253e3257bb8a)
-![Movies Backend](https://github.com/user-attachments/assets/82e4f905-ccd9-4ff0-9904-c542375ef95e)
+![WorkingBackend1](https://github.com/user-attachments/assets/a6c87689-d9d5-4ac8-bd5a-fcc5d9cd1e7e)
 
-
+## Project URLs
+FrontEnd: http://a7612436e40cb47a2adbd596130a7ef5-204310745.us-east-1.elb.amazonaws.com/
+BackEnd: http://ac502748e9644473b9593f394951345b-841978789.us-east-1.elb.amazonaws.com/movies
