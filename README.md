@@ -409,4 +409,6 @@ kustomize build | kubectl apply -f -
 
 ## License
 
-[License](LICENSE.md)
+[License](LICENSE.md)![WorkingFrontend](https://github.com/user-attachments/assets/4c779255-4798-471d-bf6d-253e3257bb8a)
+![Movies Backend](https://github.com/user-attachments/assets/82e4f905-ccd9-4ff0-9904-c542375ef95e)
+
